@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SwadUp - Premium Sattu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .product-card {
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      margin: 10px 0 5px;
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .price {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .price del {
+      color: #888;
+      margin-right: 10px;
+    }
+
+    .price strong {
+      color: #e53935;
+      font-size: 18px;
+    }
+
+    .buttons {
+      margin-top: 10px;
+    }
+
+    .buttons button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .add-to-cart {
+      background-color: #ffa500;
+      color: white;
+    }
+
+    .buy-now {
+      background-color: #28a745;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 250g Product -->
+  <div class="product-card">
+    <img src="250gm jar.jpg" alt="Premium Sattu 250g">
+    <h3>Premium Sattu - 250g</h3>
+    <p>Perfect size for light use or trying out. Pure health in every spoon!</p>
+    <div class="price">
+      <del>₹199</del><strong>₹149</strong>
+    </div>
+    <div class="buttons">
+      <button class="add-to-cart" onclick="addToCart('250g')">Add to Cart</button>
+      <button class="buy-now" onclick="buyNow('250g')">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- 500g Product -->
+  <div class="product-card">
+    <img src="500gm jar.jpg" alt="Premium Sattu 500g">
+    <h3>Premium Sattu - 500g</h3>
+    <p>Ideal for regular users. Boost your energy and health every day!</p>
+    <div class="price">
+      <del>₹350</del><strong>₹279</strong>
+    </div>
+    <div class="buttons">
+      <button class="add-to-cart" onclick="addToCart('500g')">Add to Cart</button>
+      <button class="buy-now" onclick="buyNow('500g')">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- 1000g Product -->
+  <div class="product-card">
+    <img src="sattu jar.jpg" alt="Premium Sattu 1000g">
+    <h3>Premium Sattu - 1000g</h3>
+    <p>Family pack for daily health-conscious homes. Great value & nutrition.</p>
+    <div class="price">
+      <del>₹650</del><strong>₹499</strong>
+    </div>
+    <div class="buttons">
+      <button class="add-to-cart" onclick="addToCart('1000g')">Add to Cart</button>
+      <button class="buy-now" onclick="buyNow('1000g')">Buy Now</button>
+    </div>
+  </div>
+
+  <script>
+    function addToCart(size) {
+      alert(`Added ${size} Premium Sattu to cart!`);
+      // Add to cart logic
+    }
+
+    function buyNow(size) {
+      alert(`Proceeding to buy ${size} Premium Sattu...`);
+      // Redirect to checkout
+    }
+  </script>
+
+</body>
+</html>

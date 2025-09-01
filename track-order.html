@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track Your Order | SwadUp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fffaf0;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 60px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #ff7e00;
+      margin-bottom: 25px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff7e00;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .status-box {
+      margin-top: 25px;
+      display: none;
+    }
+    .step {
+      margin: 10px 0;
+      padding: 10px;
+      border-left: 5px solid #ccc;
+      background: #f9f9f9;
+      border-radius: 5px;
+    }
+    .step.done {
+      border-color: #28a745;
+      background-color: #e6ffe6;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Track Your SwadUp Order</h2>
+  <input type="text" id="orderInput" placeholder="Enter Order ID or Phone Number" />
+  <button onclick="trackOrder()">Track Order</button>
+
+  <div id="statusBox" class="status-box">
+    <div class="step done">✅ Order Placed</div>
+    <div class="step done">📦 Packed</div>
+    <div class="step">🚚 Shipped</div>
+    <div class="step">📍 Out for Delivery</div>
+    <div class="step">✅ Delivered</div>
+  </div>
+</div>
+
+<script>
+  function trackOrder() {
+    const input = document.getElementById("orderInput").value;
+    if (input.trim() === "") {
+      alert("Please enter a valid Order ID or Phone Number");
+      return;
+    }
+
+    // This is just for demo - in real website, fetch status from backend
+    document.getElementById("statusBox").style.display = "block";
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - SwadUp</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fffdf7;
+      color: #333;
+    }
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #ff9100;
+      text-align: center;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #ff9100;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e68a00;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Contact Us</h2>
+
+    <p><strong>📞 Mobile:</strong> ‪+91-8317768403‬</p>
+    <p><strong>✉ Email:</strong> xxxxx@gmail.com</p>
+    <p><strong>📍 Address:</strong> xxxxx, Patna, Bihar - 800001</p>
+
+    <hr style="margin: 30px 0;" />
+
+    <form action="mailto:xxxxx@gmail.com" method="post" enctype="text/plain">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</body>
+</html>

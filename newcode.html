@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwadUp</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+
+    /* ✅ Ticker (now appears on top) */
+    .ticker {
+      background: linear-gradient(90deg, #facc15, #fde68a);
+      color: #222;
+      font-weight: bold;
+      padding: 6px 0;
+      overflow: hidden;
+      position: relative;
+      font-size: 14px;
+      white-space: nowrap;
+      z-index: 1000;
+    }
+
+    .ticker-track {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker-scroll 25s linear infinite;
+    }
+
+    .ticker-track span {
+      margin: 0 2.5rem;
+      display: inline-block;
+    }
+
+    @keyframes ticker-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    nav {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 999;
+    }
+
+    nav img {
+      height: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #f57c00;
+    }
+
+    .slider {
+      width: 100%;
+      height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #bbb;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #777;
+    }
+
+    .product-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 20px;
+      background-color: #fff;
+    }
+
+    .product-card {
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      margin: 10px 0 5px;
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .price {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .price del {
+      color: #888;
+      margin-right: 10px;
+    }
+
+    .price strong {
+      color: #e53935;
+      font-size: 18px;
+    }
+
+    .buttons {
+      margin-top: 10px;
+    }
+
+    .buttons button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .add-to-cart {
+      background-color: #ffa500;
+      color: white;
+    }
+
+    .buy-now {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .info-section {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 30px 10px;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+
+    .info-box {
+      width: 200px;
+      margin: 15px;
+    }
+
+    .info-box img {
+      height: 48px;
+    }
+
+    .info-box h4 {
+      margin-top: 10px;
+      color: #f57c00;
+    }
+
+    .info-box p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer {
+      background-color: #212121;
+      color: white;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 30px;
+    }
+
+    .footer-columns div h4 {
+      margin-bottom: 10px;
+    }
+
+    .footer-columns div p,
+    .footer-columns div a {
+      color: #ccc;
+      font-size: 14px;
+      margin: 5px 0;
+      text-decoration: none;
+    }
+
+    .footer-columns div a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-tagline {
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      color: #bbb;
+      font-size: 13px;
+      max-width: 300px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 50px;
+      color: #999;
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .slider {
+        height: 280px;
+      }
+      .footer-tagline {
+        position: static;
+        text-align: center;
+        margin-top: 20px;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Ticker placed on top -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>100% Pure & Authentic Sattu – No Preservatives</span>
+      <span>Rich in Protein, Loved in Tradition</span>
+      <span>Fuel Your Day with Nutritious Sattu</span>
+      <span>Made Fresh with Premium Chana</span>
+      <span>Swad bhi, Sehat bhi – Only at SwadUp</span>
+      <span>Preservative-Free | Protein-Rich | Easy to Digest</span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <img src="logo.png" alt="SwadUp Logo" />
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Orders</a></li>
+      <li><a href="track-order.html">Track Your Order</a></li>
+      <li><a href="product-sattu.html">Products</a></li>
+      <li><a href="return-refund-policy.html">Return Policy</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Slider -->
+  <section class="slider">
+    <div class="slide active" style="background-image: url('banner.jpg');"></div>
+    <div class="slide" style="background-image: url('banner1.jpg');"></div>
+    <div class="slide" style="background-image: url('banner2.jpg');"></div>
+  </section>
+  <div class="dots">
+    <span class="dot active" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+
+  <!-- Products -->
+  <section class="product-section">
+    <!-- 250g -->
+    <div class="product-card">
+      <img src="250gm jar.jpg" alt="Premium Sattu 250g">
+      <h3>Premium Sattu - 250g</h3>
+      <p>Perfect size for light use or trying out. Pure health in every spoon!</p>
+      <div class="price">
+        <del>₹199</del><strong>₹149</strong>
+      </div>
+      <div class="buttons">
+        <button class="add-to-cart" onclick="addToCart('250g')">Add to Cart</button>
+        <button class="buy-now" onclick="buyNow('250g')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- 500g -->
+    <div class="product-card">
+      <img src="500gm jar.jpg" alt="Premium Sattu 500g">
+      <h3>Premium Sattu - 500g</h3>
+      <p>Ideal for regular users. Boost your energy and health every day!</p>
+      <div class="price">
+        <del>₹350</del><strong>₹279</strong>
+      </div>
+      <div class="buttons">
+        <button class="add-to-cart" onclick="addToCart('500g')">Add to Cart</button>
+        <button class="buy-now" onclick="buyNow('500g')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- 1000g -->
+    <div class="product-card">
+      <img src="sattu jar.jpg" alt="Premium Sattu 1000g">
+      <h3>Premium Sattu - 1000g</h3>
+      <p>Family pack for daily health-conscious homes. Great value & nutrition.</p>
+      <div class="price">
+        <del>₹650</del><strong>₹499</strong>
+      </div>
+      <div class="buttons">
+        <button class="add-to-cart" onclick="addToCart('1000g')">Add to Cart</button>
+        <button class="buy-now" onclick="buyNow('1000g')">Buy Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="info-section">
+    <div class="info-box">
+      <img src="https://img.icons8.com/color/48/environment-care.png" alt="Sustainability" />
+      <h4>Sustainability</h4>
+      <p>Eco-friendly packaging & responsible sourcing.</p>
+    </div>
+    <div class="info-box">
+      <img src="https://img.icons8.com/color/48/approve.png" alt="Quality" />
+      <h4>Quality</h4>
+      <p>Only premium ingredients. No compromise.</p>
+    </div>
+    <div class="info-box">
+      <img src="https://img.icons8.com/color/48/like.png" alt="Health" />
+      <h4>Health</h4>
+      <p>Nutritious snacks without artificial additives.</p>
+    </div>
+    <div class="info-box">
+      <img src="https://img.icons8.com/color/48/people-working-together.png" alt="Community" />
+      <h4>Community</h4>
+      <p>We support farmers & give back to the community.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-columns">
+      <div>
+        <h4>About Us</h4>
+        <p><a href="about.html">About Us</a></p>
+        <p><a href="contact.html">Contact</a></p>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <p><a href="https://instagram.com/swadup.official" target="_blank">Instagram</a></p>
+        <p><a href="#">YouTube</a></p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <p><a href="track-order.html">Track Order</a></p>
+        <p><a href="return-refund-policy.html">Return & Refund Policy</a></p>
+        <p><a href="faq.html">FAQ</a></p>
+        <p><a href="privacy-policy.html">Privacy Policy</a></p>
+        <p><a href="terms-conditions.html">Terms & Conditions</a></p>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
+        <p>Email: <a href="mailto:contact@swadup.com">contact@swadup.com</a></p>
+        <p>Phone: +91 8317768403</p>
+        <p><a href="#">WhatsApp</a></p>
+      </div>
+    </div>
+
+    <div class="footer-tagline">
+      SwadUp delivers authentic, preservative-free Sattu packed with nutrition and rooted in tradition.
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2025 SwadUp. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JS for slider & buttons -->
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("slide");
+      let dots = document.getElementsByClassName("dot");
+
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.opacity = 0;
+        slides[i].classList.remove("active");
+      }
+
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+
+      slides[slideIndex - 1].style.opacity = 1;
+      slides[slideIndex - 1].classList.add("active");
+      dots[slideIndex - 1].className += " active";
+    }
+
+    setInterval(function () {
+      plusSlides(1);
+    }, 3000);
+
+    function addToCart(size) {
+      alert(`Added ${size} Premium Sattu to cart!`);
+    }
+
+    function buyNow(size) {
+      alert(`Proceeding to buy ${size} Premium Sattu...`);
+    }
+  </script>
+</body>
+</html>
